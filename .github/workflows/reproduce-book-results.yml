@@ -1,0 +1,64 @@
+name: Reproduce book recommendation results
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'notebooks/**'
+      - 'requirements.txt'
+      - '.github/workflows/reproduce-book-results.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  notebook:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - name: Check out my notebook and sources
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install notebook dependencies
+        run: python -m pip install -r requirements.txt
+      - name: Execute notebook on public Book-Crossing data
+        run: |
+          python - <<'PY'
+          import json, pathlib
+          import nbformat
+          from nbclient import NotebookClient
+          root = pathlib.Path.cwd()
+          target = root / 'notebooks' / 'Project_2_Book_Recommendation_Engine.ipynb'
+          notebook = nbformat.read(target, as_version=4)
+          NotebookClient(notebook, kernel_name='python3', timeout=600,
+                         resources={'metadata': {'path': str(root)}},
+                         allow_errors=False).execute()
+          nbformat.write(notebook, target)
+          outputs = [o for c in notebook.cells if c.cell_type == 'code'
+                     for o in c.get('outputs', [])]
+          assert not any(o.output_type == 'error' for o in outputs)
+          assert all(c.execution_count is not None for c in notebook.cells
+                     if c.cell_type == 'code')
+          results = json.loads((root / 'data' / 'results.json').read_text())
+          assert results['raw_counts']['Books.csv'] > 200000
+          assert results['raw_counts']['Ratings.csv'] > 500000
+          assert results['raw_counts']['Users.csv'] > 200000
+          assert results['collaborative_evaluable_rows'] > 100
+          assert results['graphs_saved']
+          for figure in ('top-books.png', 'top-authors.png', 'model-comparison.png'):
+              assert (root / 'assets' / figure).stat().st_size > 5000
+          print('The authentic public Book-Crossing notebook completed with tables, plots and verified metrics.')
+          print('Dataset record counts:', results['raw_counts'])
+          print('Collaborative MAE:', results['collaborative_MAE'])
+          print('Collaborative RMSE:', results['collaborative_RMSE'])
+          PY
+      - name: Save calculated notebook, charts and web presentation data
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add notebooks/Project_2_Book_Recommendation_Engine.ipynb data/results.json data/results.js assets/top-books.png assets/top-authors.png assets/model-comparison.png
+          if ! git diff --cached --quiet; then
+            git commit -m 'Record authentic Book-Crossing recommendation results'
+            git push
+          fi

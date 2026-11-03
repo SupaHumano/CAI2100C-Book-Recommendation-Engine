@@ -1,0 +1,1 @@
+window.BOOK_ENGINE_RESULTS = null;
