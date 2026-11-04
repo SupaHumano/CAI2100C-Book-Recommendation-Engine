@@ -8,14 +8,14 @@
   "explicit_linked": 383841,
   "implicit_interactions": 716109,
   "content_candidate_books": 6000,
-  "collaborative_training_rows": 36516,
-  "collaborative_test_rows": 9129,
-  "collaborative_evaluable_rows": 9129,
-  "collaborative_neighbor_coverage": 0.4089,
-  "collaborative_MAE": 1.247,
-  "collaborative_RMSE": 1.7179,
-  "baseline_MAE": 1.3338,
-  "baseline_RMSE": 1.7126,
+  "collaborative_training_rows": 36533,
+  "collaborative_test_rows": 9134,
+  "collaborative_evaluable_rows": 9134,
+  "collaborative_neighbor_coverage": 0.4074,
+  "collaborative_MAE": 1.2509,
+  "collaborative_RMSE": 1.7192,
+  "baseline_MAE": 1.3316,
+  "baseline_RMSE": 1.7057,
   "top_books": [
     {
       "title": "The Two Towers (The Lord of the Rings, Part 2)",
@@ -165,7 +165,7 @@
       "count": 126
     },
     {
-      "author": "Antoine de Saint-Exup\u00c3\u0083\u00c2\u00a9ry",
+      "author": "Antoine de Saint-Exup\u00c3\u00c2\u00a9ry",
       "rating": 9.03,
       "count": 171
     },
@@ -394,44 +394,44 @@
   ],
   "collaborative_examples": [
     {
-      "title": "The Wide Window (A Series of Unfortunate Events, Book 3)",
-      "author": "Lemony Snicket",
-      "predicted": 9.8
+      "title": "The Fellowship of the Ring (The Lord of the Rings, Part 1)",
+      "author": "J. R. R. Tolkien",
+      "predicted": 10.0
     },
     {
-      "title": "What to Expect When You're Expecting (Revised Edition)",
-      "author": "Arlene Eisenberg",
-      "predicted": 9.49
-    },
-    {
-      "title": "The Hobbit : The Enchanting Prelude to The Lord of the Rings",
-      "author": "J.R.R. TOLKIEN",
-      "predicted": 9.41
+      "title": "Holidays on Ice : Stories",
+      "author": "David Sedaris",
+      "predicted": 9.57
     },
     {
       "title": "Assassins: Assignment: Jerusalem, Target: Antichrist (Left Behind No. 6)",
       "author": "Tim Lahaye",
-      "predicted": 9.3
+      "predicted": 9.39
     },
     {
-      "title": "Tears of the Moon (Irish Trilogy)",
-      "author": "Nora Roberts",
-      "predicted": 9.29
+      "title": "Gap Creek: A Novel",
+      "author": "Robert Morgan",
+      "predicted": 9.37
     },
     {
-      "title": "Beloved (Plume Contemporary Fiction)",
-      "author": "Toni Morrison",
-      "predicted": 9.23
+      "title": "Daisy Fay and the Miracle Man",
+      "author": "Fannie Flagg",
+      "predicted": 9.31
     },
     {
-      "title": "The Dress Lodger (Ballantine Reader's Circle)",
-      "author": "Sheri Holman",
+      "title": "Man and Boy: A Novel",
+      "author": "Tony Parsons",
+      "predicted": 9.27
+    },
+    {
+      "title": "Harry Potter and the Order of the Phoenix (Book 5)",
+      "author": "J. K. Rowling",
+      "predicted": 9.19
+    },
+    {
+      "title": "Siddhartha",
+      "author": "Hermann Hesse",
       "predicted": 9.18
-    },
-    {
-      "title": "Once upon a More Enlightened Time: More Politically Correct Bedtime Stories",
-      "author": "James Finn Garner",
-      "predicted": 9.17
     }
   ],
   "graphs_saved": true
