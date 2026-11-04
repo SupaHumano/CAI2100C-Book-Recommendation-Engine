@@ -66,14 +66,14 @@ I combine explicitly recognized author-name variants and aggregate distinct book
 
 I separate the holdout before choosing training-eligible books and readers. I compare my model's holdout **MAE** and **RMSE** with a simple book-average baseline and report how often the algorithm has useful neighbors. Lower errors are better; I do not assume my collaborative model outperforms the baseline unless the numbers show it.
 
-My evaluation on **9,126 known reader-book test ratings** produced:
+My updated evaluation uses **7,547 known reader-book test ratings**, selected from an initial holdout of **76,769 explicit linked ratings**. I first split the linked ratings, then selected eligible items and readers using training records only.
 
 | Model | MAE (lower is better) | RMSE (lower is better) |
 |---|---:|---:|
-| Item-based collaborative with fallback | **1.2319** | 1.6914 |
-| Book-average baseline | 1.3235 | **1.6894** |
+| Item-based collaborative with fallback | **1.2235** | **1.6734** |
+| Book-average baseline | 1.3320 | 1.6931 |
 
-I improved MAE relative to the baseline, but the baseline had a slightly lower RMSE. Only **40.48%** of predictions had a positively similar rated neighbor; the remaining predictions used a stated fallback. These results describe my selected educational subset, not the entire Book-Crossing population.
+I improved both MAE and RMSE relative to the baseline on this selected **warm-start** evaluation. **43.01%** of my predictions used a positively similar rated neighbor; the remaining predictions used my explicitly stated fallback. I do not generalize this result to all readers, all books or a live production system.
 
 My [interactive lab](https://supahumano.github.io/CAI2100C-Book-Recommendation-Engine/) displays the recommendations and metrics saved by my Python notebook. It does **not** retrain a model in JavaScript.
 

@@ -35,4 +35,14 @@ for p,num in [('academic/Project_2_Course_Submission.ipynb',8),
 for p in ('top-books.png','top-authors.png','model-comparison.png'):
     b=(root/'assets'/p).read_bytes()
     assert len(b)>5000 and b[:8]==bytes.fromhex('89504e470d0a1a0a')
+
+# I cross-check the numbers explained in my README against the values in my executed research.
+readme=(root/'README.md').read_text(encoding='utf-8')
+for key in ('collaborative_MAE','collaborative_RMSE','baseline_MAE','baseline_RMSE'):
+    assert f"{results[key]:.4f}" in readme, 'README metric does not match research results: '+key
+assert format(results['collaborative_evaluable_rows'],',') in readme
+assert f"{results['collaborative_neighbor_coverage']*100:.2f}%" in readme
+assert (root/'docs/PRESENTATION_GUIDE.md').read_text(encoding='utf-8').count('### ') >= 40
+assert 'academic/Project_2_Course_Submission.ipynb' in readme
+
 print('PASS: two executed notebooks, ranked works, metrics, source hashes, presentation synchronization')
