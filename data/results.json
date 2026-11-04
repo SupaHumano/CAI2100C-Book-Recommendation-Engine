@@ -5,35 +5,30 @@
     "Ratings.csv": 1149780,
     "Users.csv": 278858
   },
+  "source_sha256": {
+    "Books.csv": "8a406befc83452ab2dded8050dec47bccb6aa8110edb2512b62d8402f1a3d8dd",
+    "Ratings.csv": "fbb819408aa8d42e7675200b26d48d66660b6e712bbd82585e5b564053d29de9",
+    "Users.csv": "d82fe997ee9bfc455d0090b67d235694b82a9479d03e036665945ac9d30981bc"
+  },
+  "evaluation_protocol": "Split explicit linked ratings first; select eligible books and users using training only; evaluate warm-start holdout pairs",
+  "holdout_pool_rows": 76769,
   "explicit_linked": 383841,
   "implicit_interactions": 716109,
   "content_candidate_books": 6000,
-  "collaborative_training_rows": 36502,
-  "collaborative_test_rows": 9126,
-  "collaborative_evaluable_rows": 9126,
-  "collaborative_neighbor_coverage": 0.4048,
-  "collaborative_MAE": 1.2319,
-  "collaborative_RMSE": 1.6914,
-  "baseline_MAE": 1.3235,
-  "baseline_RMSE": 1.6894,
+  "collaborative_training_rows": 34064,
+  "collaborative_test_rows": 7547,
+  "collaborative_evaluable_rows": 7547,
+  "collaborative_neighbor_coverage": 0.4301,
+  "collaborative_MAE": 1.2235,
+  "collaborative_RMSE": 1.6734,
+  "baseline_MAE": 1.332,
+  "baseline_RMSE": 1.6931,
   "top_books": [
     {
-      "title": "The Two Towers (The Lord of the Rings, Part 2)",
-      "author": "J. R. R. Tolkien",
-      "rating": 9.72,
-      "count": 25
-    },
-    {
-      "title": "84 Charing Cross Road",
-      "author": "Helene Hanff",
-      "rating": 9.46,
-      "count": 28
-    },
-    {
-      "title": "The Return of the King (The Lord of the Rings, Part 3)",
-      "author": "J.R.R. TOLKIEN",
-      "rating": 9.4,
-      "count": 77
+      "title": "The Giving Tree",
+      "author": "Shel Silverstein",
+      "rating": 9.42,
+      "count": 26
     },
     {
       "title": "Where the Sidewalk Ends : Poems and Drawings",
@@ -42,10 +37,10 @@
       "count": 25
     },
     {
-      "title": "The Cat in the Hat",
-      "author": "Dr. Seuss",
-      "rating": 9.31,
-      "count": 32
+      "title": "The Two Towers (The Lord of the Rings, Part 2)",
+      "author": "J. R. R. Tolkien",
+      "rating": 9.33,
+      "count": 136
     },
     {
       "title": "Love You Forever",
@@ -54,10 +49,10 @@
       "count": 25
     },
     {
-      "title": "Harry Potter and the Goblet of Fire (Book 4)",
-      "author": "J. K. Rowling",
-      "rating": 9.26,
-      "count": 137
+      "title": "The Cat in the Hat",
+      "author": "Dr. Seuss",
+      "rating": 9.24,
+      "count": 33
     },
     {
       "title": "Weirdos From Another Planet!",
@@ -66,16 +61,16 @@
       "count": 25
     },
     {
-      "title": "Lonesome Dove",
-      "author": "Larry McMurtry",
+      "title": "The Return of the King (The Lord of the Rings, Part 3)",
+      "author": "J. R. R. Tolkien",
       "rating": 9.21,
-      "count": 33
+      "count": 103
     },
     {
-      "title": "Harry Potter and the Sorcerer's Stone (Book 1)",
-      "author": "J. K. Rowling",
-      "rating": 9.21,
-      "count": 53
+      "title": "Lonesome Dove",
+      "author": "Larry McMurtry",
+      "rating": 9.16,
+      "count": 37
     },
     {
       "title": "The Grapes of Wrath",
@@ -84,28 +79,28 @@
       "count": 31
     },
     {
-      "title": "The Two Towers (The Lord of the Rings, Part 2)",
-      "author": "J.R.R. TOLKIEN",
-      "rating": 9.12,
-      "count": 83
+      "title": "The Little Prince",
+      "author": "Antoine de Saint-Exup\u00e9ry",
+      "rating": 9.13,
+      "count": 87
     },
     {
-      "title": "The Time Traveler's Wife",
-      "author": "Audrey Niffenegger",
-      "rating": 9.12,
-      "count": 25
-    },
-    {
-      "title": "The Fellowship of the Ring (The Lord of the Rings, Part 1)",
-      "author": "J. R. R. Tolkien",
-      "rating": 9.09,
-      "count": 43
-    },
-    {
-      "title": "Harry Potter and the Prisoner of Azkaban (Book 3)",
+      "title": "Harry Potter and the Goblet of Fire (Book 4)",
       "author": "J. K. Rowling",
-      "rating": 9.08,
-      "count": 133
+      "rating": 9.13,
+      "count": 247
+    },
+    {
+      "title": "The Hobbit",
+      "author": "J. R. R. Tolkien",
+      "rating": 9.12,
+      "count": 50
+    },
+    {
+      "title": "Illusions",
+      "author": "Richard Bach",
+      "rating": 9.11,
+      "count": 37
     },
     {
       "title": "Charlotte's Web (Trophy Newbery)",
@@ -114,28 +109,40 @@
       "count": 68
     },
     {
-      "title": "Illusions",
-      "author": "Richard Bach",
-      "rating": 9.07,
-      "count": 29
+      "title": "Harry Potter and the Sorcerer's Stone (Book 1)",
+      "author": "J. K. Rowling",
+      "rating": 9.06,
+      "count": 176
     },
     {
-      "title": "Griffin &amp; Sabine: An Extraordinary Correspondence",
+      "title": "Griffin & Sabine: An Extraordinary Correspondence",
       "author": "Nick Bantock",
       "rating": 9.06,
       "count": 48
+    },
+    {
+      "title": "84 Charing Cross Road",
+      "author": "Helene Hanff",
+      "rating": 9.05,
+      "count": 61
+    },
+    {
+      "title": "Harry Potter and the Order of the Phoenix (Book 5)",
+      "author": "J. K. Rowling",
+      "rating": 9.05,
+      "count": 211
+    },
+    {
+      "title": "Harry Potter and the Prisoner of Azkaban (Book 3)",
+      "author": "J. K. Rowling",
+      "rating": 9.04,
+      "count": 277
     },
     {
       "title": "The Second Summer of the Sisterhood",
       "author": "ANN BRASHARES",
       "rating": 9.04,
       "count": 25
-    },
-    {
-      "title": "To Kill a Mockingbird",
-      "author": "Harper Lee",
-      "rating": 9.04,
-      "count": 26
     }
   ],
   "top_authors": [
@@ -165,7 +172,7 @@
       "count": 126
     },
     {
-      "author": "Antoine de Saint-Exup\u00c3\u00c2\u00a9ry",
+      "author": "Antoine de Saint-Exup\u00e9ry",
       "rating": 9.03,
       "count": 171
     },
@@ -180,34 +187,24 @@
       "count": 281
     },
     {
-      "author": "J. K. Rowling",
-      "rating": 8.97,
-      "count": 1746
-    },
-    {
       "author": "Clamp",
       "rating": 8.96,
       "count": 109
     },
     {
-      "author": "J.R.R. TOLKIEN",
-      "rating": 8.9,
-      "count": 498
-    },
-    {
-      "author": "L.M. MONTGOMERY",
-      "rating": 8.89,
-      "count": 218
-    },
-    {
-      "author": "L.M. Montgomery",
-      "rating": 8.85,
-      "count": 95
+      "author": "J. K. Rowling",
+      "rating": 8.96,
+      "count": 1769
     },
     {
       "author": "E. B. White",
       "rating": 8.85,
       "count": 156
+    },
+    {
+      "author": "Lucy Maud Montgomery",
+      "rating": 8.82,
+      "count": 440
     },
     {
       "author": "WILLIAM GOLDMAN",
@@ -235,9 +232,19 @@
       "count": 101
     },
     {
-      "author": "Lucy Maud Montgomery",
-      "rating": 8.75,
-      "count": 59
+      "author": "Michael Ende",
+      "rating": 8.73,
+      "count": 83
+    },
+    {
+      "author": "Max Lucado",
+      "rating": 8.72,
+      "count": 130
+    },
+    {
+      "author": "Jacqueline Carey",
+      "rating": 8.72,
+      "count": 64
     }
   ],
   "content_examples": [
@@ -312,7 +319,7 @@
         {
           "title": "Illuminati.",
           "author": "Dan Brown",
-          "score": 0.6061
+          "score": 0.6559
         },
         {
           "title": "Deception Point",
@@ -320,14 +327,14 @@
           "score": 0.5973
         },
         {
-          "title": "Angels &amp; Demons",
+          "title": "Angels & Demons",
           "author": "Dan Brown",
-          "score": 0.5579
+          "score": 0.5891
         },
         {
-          "title": "Angels and Demons",
+          "title": "Angels & Demons",
           "author": "Dan Brown",
-          "score": 0.5385
+          "score": 0.5219
         }
       ]
     },
@@ -394,44 +401,44 @@
   ],
   "collaborative_examples": [
     {
-      "title": "Brave New World",
-      "author": "Aldous Huxley",
+      "title": "Slow Waltz in Cedar Bend",
+      "author": "Robert James Waller",
       "predicted": 10.0
     },
     {
-      "title": "Dharma Bums",
-      "author": "Jack Kerouac",
-      "predicted": 9.58
+      "title": "Russendisko.",
+      "author": "Wladimir Kaminer",
+      "predicted": 10.0
     },
     {
-      "title": "Man and Boy: A Novel",
-      "author": "Tony Parsons",
-      "predicted": 9.53
+      "title": "Siddhartha",
+      "author": "Hermann Hesse",
+      "predicted": 9.47
     },
     {
-      "title": "Born in Shame",
-      "author": "Nora Roberts",
-      "predicted": 9.53
+      "title": "Merrick (Vampire Chronicles)",
+      "author": "Anne Rice",
+      "predicted": 9.42
     },
     {
-      "title": "Brave New World",
-      "author": "Aldous Huxley",
-      "predicted": 9.4
+      "title": "High Tide in Tucson : Essays from Now or Never",
+      "author": "Barbara Kingsolver",
+      "predicted": 9.41
     },
     {
-      "title": "The Chamber",
-      "author": "John Grisham",
-      "predicted": 9.38
+      "title": "The Runaway Jury",
+      "author": "JOHN GRISHAM",
+      "predicted": 9.36
     },
     {
-      "title": "Tears of the Moon (Irish Trilogy)",
-      "author": "Nora Roberts",
-      "predicted": 9.28
+      "title": "Assassins: Assignment: Jerusalem, Target: Antichrist (Left Behind No. 6)",
+      "author": "Tim Lahaye",
+      "predicted": 9.33
     },
     {
-      "title": "Portrait in Death",
-      "author": "Nora Roberts",
-      "predicted": 9.24
+      "title": "The Greatest Generation",
+      "author": "TOM BROKAW",
+      "predicted": 9.27
     }
   ],
   "graphs_saved": true
