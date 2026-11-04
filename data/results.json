@@ -8,14 +8,14 @@
   "explicit_linked": 383841,
   "implicit_interactions": 716109,
   "content_candidate_books": 6000,
-  "collaborative_training_rows": 36533,
-  "collaborative_test_rows": 9134,
-  "collaborative_evaluable_rows": 9134,
-  "collaborative_neighbor_coverage": 0.4074,
-  "collaborative_MAE": 1.2509,
-  "collaborative_RMSE": 1.7192,
-  "baseline_MAE": 1.3316,
-  "baseline_RMSE": 1.7057,
+  "collaborative_training_rows": 36502,
+  "collaborative_test_rows": 9126,
+  "collaborative_evaluable_rows": 9126,
+  "collaborative_neighbor_coverage": 0.4048,
+  "collaborative_MAE": 1.2319,
+  "collaborative_RMSE": 1.6914,
+  "baseline_MAE": 1.3235,
+  "baseline_RMSE": 1.6894,
   "top_books": [
     {
       "title": "The Two Towers (The Lord of the Rings, Part 2)",
@@ -394,44 +394,44 @@
   ],
   "collaborative_examples": [
     {
-      "title": "The Fellowship of the Ring (The Lord of the Rings, Part 1)",
-      "author": "J. R. R. Tolkien",
+      "title": "Brave New World",
+      "author": "Aldous Huxley",
       "predicted": 10.0
     },
     {
-      "title": "Holidays on Ice : Stories",
-      "author": "David Sedaris",
-      "predicted": 9.57
-    },
-    {
-      "title": "Assassins: Assignment: Jerusalem, Target: Antichrist (Left Behind No. 6)",
-      "author": "Tim Lahaye",
-      "predicted": 9.39
-    },
-    {
-      "title": "Gap Creek: A Novel",
-      "author": "Robert Morgan",
-      "predicted": 9.37
-    },
-    {
-      "title": "Daisy Fay and the Miracle Man",
-      "author": "Fannie Flagg",
-      "predicted": 9.31
+      "title": "Dharma Bums",
+      "author": "Jack Kerouac",
+      "predicted": 9.58
     },
     {
       "title": "Man and Boy: A Novel",
       "author": "Tony Parsons",
-      "predicted": 9.27
+      "predicted": 9.53
     },
     {
-      "title": "Harry Potter and the Order of the Phoenix (Book 5)",
-      "author": "J. K. Rowling",
-      "predicted": 9.19
+      "title": "Born in Shame",
+      "author": "Nora Roberts",
+      "predicted": 9.53
     },
     {
-      "title": "Siddhartha",
-      "author": "Hermann Hesse",
-      "predicted": 9.18
+      "title": "Brave New World",
+      "author": "Aldous Huxley",
+      "predicted": 9.4
+    },
+    {
+      "title": "The Chamber",
+      "author": "John Grisham",
+      "predicted": 9.38
+    },
+    {
+      "title": "Tears of the Moon (Irish Trilogy)",
+      "author": "Nora Roberts",
+      "predicted": 9.28
+    },
+    {
+      "title": "Portrait in Death",
+      "author": "Nora Roberts",
+      "predicted": 9.24
     }
   ],
   "graphs_saved": true
