@@ -1,55 +1,45 @@
-# My methodology — Book Recommendation Engine
+# My methodology and reproducibility
 
-**Juan Luna Santibanez | CAI2100C Machine Learning Foundations | Professor Beth Muturi**
+**Juan Luna Santibanez | CAI2100C-2267-6908 | Professor Beth Muturi**
 
-## The problem I solve
+## My problem and project cycle
 
-I compare two ways to recommend a book. Content-Based Filtering matches book information; Collaborative Filtering learns from patterns of reader ratings. I keep the two methods separate so I can explain why each recommendation appears.
+I compare metadata-based and reader-rating-based recommendations within the six stages described in class: problem, acquisition, preparation and EDA, modeling, evaluation and responsible deployment.
 
-## Data and preparation
+## My source and dataset checks
 
-I use three Book-Crossing tables: books (`ISBN`, title, author, publisher, publication year), ratings (`User-ID`, `ISBN`, `Book-Rating`), and anonymized users (`User-ID`, location, age). My notebook prefers local CSV files, with a public-source download fallback described in `data/README.md`.
+I load three Book-Crossing tables: Books, Ratings and Users. I prefer available local files and use a documented public mirror otherwise. I retain the unmodified file inputs and record a SHA-256 digest of each source in the research results. I never claim a public mirror is identical to an instructor ZIP I have not verified.
 
-I retain ISBN values as **strings**, not numbers, because ISBN can begin with `0`. I handle missing values and implausible years and ages, remove duplicate user-book ratings, and compare explicit and implicit interactions separately. For numerical predictions I use only explicit ratings **1–10**. An implicit rating of **0** does not mean the user disliked the book.
+I preserve ISBN as text, clean damaged character encodings with `ftfy` and HTML decoding, and separate implicit interactions (0) from explicit ratings (1 through 10).
 
-## Exploratory analysis
+## My rankings
 
-I calculate the 20 most highly rated books and 20 most highly rated authors. I apply minimum rating counts (25 and 50, respectively, for the full public dataset) so a single excellent score does not dominate the ranking. I report both average rating and number of reviews. These are ratings rankings, not counts of books authored or absolute popularity rankings.
+I treat a book ranking as a ranking of distinct **work title and author combinations**. Different ISBN editions contribute their explicit ratings to the same work when that pairing is identical. My recommendation engine continues to model ISBN editions separately. I combine only a documented small set of author aliases and spelling variants. I require 25 explicit ratings for a ranked work and 50 for a ranked author when I use the full public dataset. These thresholds are modeling choices and not universal rules.
 
-## My first model — Content-Based
+## My content model
 
-I make one text representation per book using title, author, publisher, and available publication year, then apply `TfidfVectorizer` and cosine similarity. I restrict the candidate catalog to books with sufficient interactions and a maximum of 6,000 candidate titles to keep the educational demo efficient. The scores express metadata similarity, not estimated reader ratings.
+I use available title, author, publisher and year fields. I convert a bounded candidate catalog into TF-IDF features and compute cosine similarity. The 6,000-item bound and positive-interaction screening make the educational experiment practical, but I acknowledge that this restricts coverage of cold-start books.
 
-## My second model — Collaborative
+## My collaborative model
 
-I select up to 1,500 frequently rated books and sufficiently active readers. I split explicit ratings **80/20** using `random_state=42`, fit an item-user sparse matrix on training observations, find neighboring books using cosine similarity, and predict held-out ratings from the reader's training ratings for those neighbors.
+I divide all linked explicit interactions into an 80 percent development pool and a 20 percent holdout **before selecting eligible items or readers**. I select up to 1,500 eligible ISBNs and readers with enough ratings from the development data only. I build an item-user sparse matrix and find neighbors using cosine similarity.
 
-If there are no overlapping positively similar neighbors, my function falls back to the training item mean (or global training mean for a new item). I report how many test predictions were supported by neighbors. I evaluate both the collaborative predictions and a book-mean baseline with MAE and RMSE, without using held-out values during fitting.
+I evaluate the held-out pairs with reader and item history in training. I report the total holdout and the subset eligible for warm-start evaluation. I compare my predictions to a book-average baseline on the same rows, using MAE, RMSE and usable-neighbor coverage. Where useful neighbors are missing I use the book training mean or the global development mean.
 
-The subset selection is based on interaction counts before splitting; this is a reproducibility/performance compromise suitable for this introductory exercise, **not** an unbiased real-world performance estimate. A production evaluation would use a fully time-separated split and select eligible users and books from training data only.
+I do not force my new results to reproduce values from the earlier protocol. Changing the evaluation selection can change both metrics and coverage.
 
-## What the metrics mean
+## My published outputs
 
-- **MAE:** Average absolute difference in rating points between a prediction and the actual held-out rating. Lower is better.
-- **RMSE:** Square root of mean squared prediction error. Penalizes larger mistakes more heavily. Lower is better.
-- **Neighbor coverage:** Percentage of test predictions that had at least one usable rated neighbor; other cases use the stated fallback.
+I generate the figures, `data/results.json` and `data/results.js` from the research notebook. My GitHub Pages interface displays stored Python results and does not retrain a model. The academic notebook is the separately identifiable classroom response; the research notebook includes optional website output.
 
-I compare the model to a simple baseline, and I do not assume the collaborative model is better unless the measured result supports it.
+## My limitations
 
-## Results and browser demonstration
-
-Running the notebook saves output tables, charts, `data/results.json`, and `data/results.js`. My GitHub Pages website only presents this saved computation. It does not execute scikit-learn or make new predictions inside the browser.
-
-The charts and figures are student-facing explanations of a completed experiment; source documents, classroom slides, and personal data are not republished.
-
-## Limitations
-
-The dataset is historical; its demographic fields are incomplete; popularity affects which books are eligible; and cold start remains a limitation. Book-Crossing does not provide full descriptions or genres in this three-CSV format, so I use the metadata actually available. My work is an educational assignment, not a production recommendation platform.
+I study historical data with incomplete metadata and uneven user activity. My evaluation favors books and readers with training histories. My limited name normalization does not claim universal identity matching. I do not interpret the prototype as a production recommendation service.
 
 ## References
 
-- Professor Beth Muturi, *Project 2: Practical Application of a Recommendation Engine*, CAI2100C, Miami Dade College.
-- [GroupLens — Book-Crossing dataset](https://grouplens.org/datasets/book-crossing/).
-- [Microsoft Learn — book recommendation data](https://learn.microsoft.com/en-us/fabric/data-science/retail-recommend-model).
-- [scikit-learn: TF-IDF](https://scikit-learn.org/stable/modules/generated/sklearn.feature_extraction.text.TfidfVectorizer.html).
-- [scikit-learn: NearestNeighbors](https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.NearestNeighbors.html).
+- Beth Muturi, Miami Dade College, CAI2100C, Project 2 class discussion, October 14 and November 2, 2026.
+- [GroupLens Book-Crossing dataset](https://grouplens.org/datasets/book-crossing/).
+- [Microsoft Learn Book-Crossing walkthrough](https://learn.microsoft.com/en-us/fabric/data-science/retail-recommend-model).
+- [scikit-learn: common pitfalls](https://scikit-learn.org/stable/common_pitfalls.html).
+- [scikit-learn: nearest neighbors](https://scikit-learn.org/stable/modules/neighbors.html).

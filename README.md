@@ -15,7 +15,9 @@
 
 **Books. Readers. Two recommendation methods. One reproducible study.**
 
-[**Open in Google Colab**](https://colab.research.google.com/github/SupaHumano/CAI2100C-Book-Recommendation-Engine/blob/main/notebooks/Project_2_Book_Recommendation_Engine.ipynb) · [**My Notebook**](notebooks/Project_2_Book_Recommendation_Engine.ipynb) · [**Interactive Lab**](https://supahumano.github.io/CAI2100C-Book-Recommendation-Engine/) · [**Methodology**](docs/METHODOLOGY.md)
+I keep a course-aligned notebook separate from my optional research and visual presentation. I do not claim that my notebook is the unretrieved original class ZIP.
+
+[**Course Notebook in Google Colab**](https://colab.research.google.com/github/SupaHumano/CAI2100C-Book-Recommendation-Engine/blob/main/academic/Project_2_Course_Submission.ipynb) · [**Academic Notebook**](academic/Project_2_Course_Submission.ipynb) · [**Research Notebook**](notebooks/Project_2_Book_Recommendation_Engine.ipynb) · [**Interactive Lab**](https://supahumano.github.io/CAI2100C-Book-Recommendation-Engine/) · [**Methodology**](docs/METHODOLOGY.md)
 
 </div>
 
@@ -23,13 +25,13 @@
 
 ---
 
-[**Overview**](#overview) · [**Course project**](#course-project) · [**Methods**](#two-recommendation-methods) · [**Results**](#my-results) · [**Run**](#run-my-notebook) · [**Structure**](#repository-structure) · [**References**](#references)
+[**Course Requirements**](docs/REQUIREMENTS.md) · [**40 Questions and Answers**](docs/PRESENTATION_GUIDE.md) · [**Overview**](#overview) · [**Course project**](#course-project) · [**Methods**](#two-recommendation-methods) · [**Results**](#my-results) · [**Run**](#run-my-notebook) · [**Structure**](#repository-structure) · [**References**](#references)
 
 ## Overview
 
 I created a practical book recommendation engine using the Book-Crossing dataset and two methods from my machine learning course: content-based filtering and collaborative filtering. My goal is to understand how available book metadata and reader ratings lead to different recommendations.
 
-I follow the six-stage learning process used in class: understanding the problem, acquiring data, preparing and exploring the data, modeling, evaluating results, and considering responsible deployment. The **Jupyter notebook is my primary course deliverable**; the web lab is a separate educational presentation of my calculated results.
+I follow the six-stage learning process used in class: understanding the problem, acquiring data, preparing and exploring the data, modeling, evaluating results, and considering responsible deployment. My academic notebook under `academic/` is the course-aligned study. My research notebook produces the optional website's figures and evaluation outputs.
 
 ## Course Project
 
@@ -46,7 +48,7 @@ This repository is **my individual GitHub portfolio of the work**. Actual course
 
 ![Model and evaluation workflow](assets/workflow.svg)
 
-**Important:** a `Book-Rating` value of **0** in Book-Crossing is an implicit interaction, not a zero-star review. I use explicit ratings **1–10** for model evaluation. I retain ISBN identifiers as strings so leading zeros are preserved.
+**Important:** a `Book-Rating` value of **0** in Book-Crossing is an implicit interaction, not a zero-star review. I use explicit ratings **1-10** for model evaluation. I retain ISBN identifiers as strings so leading zeros are preserved.
 
 ## My Results
 
@@ -56,15 +58,15 @@ This repository is **my individual GitHub portfolio of the work**. Actual course
 |:---:|:---:|
 | ![Top twenty books calculated by my notebook](assets/top-books.png) | ![Top twenty authors calculated by my notebook](assets/top-authors.png) |
 
-I apply a minimum number of explicit ratings before ranking by average score. This helps me avoid treating one isolated ten-star rating as stronger evidence than many consistent reviews.
+I combine explicitly recognized author-name variants and aggregate distinct book works by title and author. I apply a minimum number of explicit ratings before ranking by average score. This helps me avoid treating one isolated ten-star rating as stronger evidence than many consistent reviews.
 
 ### Collaborative evaluation
 
 ![Measured error comparison from my executed notebook](assets/model-comparison.png)
 
-I compare the model's holdout **MAE** and **RMSE** with a simple book-average baseline and report how often the algorithm has useful neighbors. Lower errors are better; I do not assume my collaborative model outperforms the baseline unless the numbers show it.
+I separate the holdout before choosing training-eligible books and readers. I compare my model's holdout **MAE** and **RMSE** with a simple book-average baseline and report how often the algorithm has useful neighbors. Lower errors are better; I do not assume my collaborative model outperforms the baseline unless the numbers show it.
 
-My evaluation on **9,126 known reader–book test ratings** produced:
+My evaluation on **9,126 known reader-book test ratings** produced:
 
 | Model | MAE (lower is better) | RMSE (lower is better) |
 |---|---:|---:|
@@ -75,6 +77,10 @@ I improved MAE relative to the baseline, but the baseline had a slightly lower R
 
 My [interactive lab](https://supahumano.github.io/CAI2100C-Book-Recommendation-Engine/) displays the recommendations and metrics saved by my Python notebook. It does **not** retrain a model in JavaScript.
 
+## My Course Requirements and Questions
+
+I answer the introductory questions about dataset sources, machine learning types and the importance of AI. I organize the work into the six stages of our course framework and use the [requirements map](docs/REQUIREMENTS.md) to keep known instructions separate from my optional portfolio features. My [40-question guide](docs/PRESENTATION_GUIDE.md) helps me explain the methodology and limitations in first person.
+
 ## Data and Reproducibility
 
 I use three Book-Crossing files: `Books.csv`, `Ratings.csv`, and `Users.csv`. The notebook first looks for those files locally. If they are missing, it downloads a public copy documented by [Microsoft Learn](https://learn.microsoft.com/en-us/fabric/data-science/retail-recommend-model). The source dataset is documented by [GroupLens](https://grouplens.org/datasets/book-crossing/).
@@ -84,6 +90,9 @@ The publicly available copy is a practical fallback, not a claim that I had the 
 ## Run My Notebook
 
 ### Google Colab
+
+I open [my classroom-aligned notebook](https://colab.research.google.com/github/SupaHumano/CAI2100C-Book-Recommendation-Engine/blob/main/academic/Project_2_Course_Submission.ipynb) for the academic workflow. I use [my extended notebook](notebooks/Project_2_Book_Recommendation_Engine.ipynb) to recompute the website figures and additional evaluation records.
+
 
 Open [my notebook in Google Colab](https://colab.research.google.com/github/SupaHumano/CAI2100C-Book-Recommendation-Engine/blob/main/notebooks/Project_2_Book_Recommendation_Engine.ipynb). Choose **Runtime → Run all**. The notebook looks for the original CSVs and downloads missing public data when a local copy is not present.
 
