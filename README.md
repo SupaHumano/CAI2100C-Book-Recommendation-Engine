@@ -27,7 +27,7 @@
 
 ## Overview
 
-I created a practical book recommendation engine using the Book-Crossing dataset and two methods from my machine learning course: content-based filtering and collaborative filtering. My goal is to understand how book descriptions and reader ratings lead to different recommendations.
+I created a practical book recommendation engine using the Book-Crossing dataset and two methods from my machine learning course: content-based filtering and collaborative filtering. My goal is to understand how available book metadata and reader ratings lead to different recommendations.
 
 I follow the six-stage learning process used in class: understanding the problem, acquiring data, preparing and exploring the data, modeling, evaluating results, and considering responsible deployment. The **Jupyter notebook is my primary course deliverable**; the web lab is a separate educational presentation of my calculated results.
 
@@ -63,6 +63,15 @@ I apply a minimum number of explicit ratings before ranking by average score. Th
 ![Measured error comparison from my executed notebook](assets/model-comparison.png)
 
 I compare the model's holdout **MAE** and **RMSE** with a simple book-average baseline and report how often the algorithm has useful neighbors. Lower errors are better; I do not assume my collaborative model outperforms the baseline unless the numbers show it.
+
+My evaluation on **9,129 known reader–book test ratings** produced:
+
+| Model | MAE (lower is better) | RMSE (lower is better) |
+|---|---:|---:|
+| Item-based collaborative with fallback | **1.2470** | 1.7179 |
+| Book-average baseline | 1.3338 | **1.7126** |
+
+I improved MAE relative to the baseline, but the baseline had a slightly lower RMSE. Only **40.89%** of predictions had a positively similar rated neighbor; the remaining predictions used a stated fallback. These results describe my selected educational subset, not the entire Book-Crossing population.
 
 My [interactive lab](https://supahumano.github.io/CAI2100C-Book-Recommendation-Engine/) displays the recommendations and metrics saved by my Python notebook. It does **not** retrain a model in JavaScript.
 
