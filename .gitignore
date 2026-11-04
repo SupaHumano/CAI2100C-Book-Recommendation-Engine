@@ -1,0 +1,9 @@
+__pycache__/
+.ipynb_checkpoints/
+.DS_Store
+.venv/
+*.pyc
+# Original large book datasets are downloaded or provided for notebook execution.
+data/Books.csv
+data/Ratings.csv
+data/Users.csv
